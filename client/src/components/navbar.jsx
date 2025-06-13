@@ -9,7 +9,10 @@ export default function Navbar(){
     return(
         <nav className="bg-surface fiexed top-0  w-full  border-b shadow-md ">
           <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5">
-            <h1 className="text-text-main text-2xl font-bold">Portfolio</h1>
+           <Link to="/">
+            <h1 className="text-text-main text-2xl font-bold cursor-pointer">Portfolio</h1>
+           </Link>
+            
             <ul className="hidden md:flex gap-6 text-text-main">
                 {
                 navLinks.map((link=>(
@@ -19,8 +22,26 @@ export default function Navbar(){
                 )))
                 }
             </ul>
+
+            <div className="md:hidden text-2xl text-text-main" onClick={()=> setOpen(!open)}>
+                {open ? '✖' : '☰'}
+            </div>
           </div>
             
+            {open && (
+                <div className="md:hidden  text-text-main px-6 pb-4">
+                {
+                navLinks.map((link=>(
+                    <Link key={link}
+                        onClick={()=> setOpen(false)}
+                        className="block py-2 text-lg border-b border-gray-100 hover:text-text-muted cursor-pointer"
+                    >
+                        {link}
+                    </Link>
+                )))
+                }
+            </div>
+            )}
         </nav>
     )
 }
