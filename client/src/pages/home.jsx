@@ -1,4 +1,5 @@
 import banner from "../assets/2.jpg"
+import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 
 
@@ -16,7 +17,11 @@ export default function Home(){
           </div>
 
           {/*Text*/}
-          <div className="flex-row top-40 absolute pl-10 font-bold">
+          <motion.div
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5 }}
+            className="flex-row top-40 absolute pl-10 font-bold">
             <h1 className="text-3xl py-2">Hello, It's me</h1>
             <h1 className="text-5xl py-2">Sumudu Sandaruwan</h1>
              <h1 className="text-3xl py-2 ">I'm a
@@ -32,7 +37,7 @@ export default function Home(){
                 />
                 </span>
               </h1>
-          </div>
-          </div>
+          </motion.div>
+        </div>
     )
 }
