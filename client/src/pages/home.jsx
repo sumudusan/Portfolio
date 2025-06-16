@@ -1,7 +1,7 @@
 import banner from "../assets/2.jpg"
 import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
-
+import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Home(){
 
@@ -37,6 +37,21 @@ export default function Home(){
                 />
                 </span>
               </h1>
+            {/* Social Media Icons */}
+            <div className="flex gap-6 text-3xl mt-6">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebook className="hover:text-blue-500 transition duration-300" />
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <FaGithub className="hover:text-gray-400 transition duration-300" />
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <FaLinkedin className="hover:text-blue-400 transition duration-300" />
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram className="hover:text-pink-400 transition duration-300" />
+              </a>
+            </div>
           </motion.div>
         </div>
     )
