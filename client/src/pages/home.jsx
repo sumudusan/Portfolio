@@ -1,7 +1,8 @@
-import banner from "../assets/2.jpg"
+import AboutImg from "../assets/1.png";
 import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Home(){
 
@@ -16,7 +17,9 @@ export default function Home(){
             />
           </div>
 
-          {/*Text*/}
+        {/* Hero Content */}
+        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-1 md:grid-cols-2 items-center px-8">
+          {/* Left Side - Text */}
           <motion.div
             initial={{ opacity: 0, y: 200 }}
             animate={{ opacity: 1, y: 0 }}
@@ -37,6 +40,7 @@ export default function Home(){
                 />
                 </span>
               </h1>
+
             {/* Social Media Icons */}
             <div className="flex gap-6 text-3xl mt-6">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
@@ -52,7 +56,26 @@ export default function Home(){
                 <FaInstagram className="hover:text-pink-400 transition duration-300" />
               </a>
             </div>
+
+            {/* More About Me Link */}
+            <div className="mt-8">
+              <Link
+                to="/about"
+                className="inline-block bg-primary-light text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition duration-300 font-medium"
+              >
+                More About Me
+              </Link>
+            </div>
           </motion.div>
+
+          {/* Right Side - Image */}
+          <div className="flex justify-center z-10">
+            <img
+              src={AboutImg}
+              alt="profile"
+              className="h-[70vh] w-auto rounded-full object-cover shadow-lg"
+            />
+          </div>
         </div>
     )
 }
