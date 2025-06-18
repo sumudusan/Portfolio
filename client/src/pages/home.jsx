@@ -4,12 +4,48 @@ import { TypeAnimation } from 'react-type-animation';
 import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function Home(){
-
-    return(
-        <div className=" w-full min-h-screen text-white">
-            {/*banner image*/}
-          <div className="relative  ">
+  const projects = [
+  {
+    id: 1,
+    title: "Portfolio Website",
+    description:
+      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
+    image: "/projects/portfolio.png",
+    link: "https://your-live-demo-url.com",
+  },
+  {
+    id: 2,
+    title: "Portfolio Website",
+    description:
+      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
+    image: "/projects/portfolio.png",
+    link: "https://your-live-demo-url.com",
+  },
+  {
+    id: 3,
+    title: "Portfolio Website",
+    description:
+      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
+    image: "/projects/portfolio.png",
+    link: "https://your-live-demo-url.com",
+  },
+  {
+    id: 4,
+    title: "Portfolio Website",
+    description:
+      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
+    image: "/projects/portfolio.png",
+    link: "https://your-live-demo-url.com",
+  },
+  {
+    id: 5,
+    title: "Portfolio Website",
+    description:
+      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
+    image: "/projects/portfolio.png",
+    link: "https://your-live-demo-url.com",
+  },
+];
             <img 
              src={banner}
              alt="banner image"
@@ -183,4 +219,68 @@ export default function Home(){
   </div>
 </div>
 
+
+{/*----------------------------------------------------------------------------------------- */}
+         {/* Projects Section */}
+<div className="min-h-screen bg-[#0f172a] py-16 px-6 text-white relative">
+  <motion.h1
+    ref={projectsRef}
+    initial={{ opacity: 0, y: 70 }}
+    animate={isInViews ? { opacity: 1, y: 0 } : {}}
+    transition={{ duration: 1.2 }}
+    className="text-4xl font-bold text-center mb-12"
+  >
+    Recent Projects
+  </motion.h1>
+
+  <div className="max-w-6xl mx-auto relative">
+    {/* Custom navigation buttons */}
+    <div className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white/10 hover:bg-white/20 p-2 rounded-full hidden md:flex">
+      <ArrowLeftIcon className="w-6 h-6 text-white" />
+    </div>
+    <div className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white/10 hover:bg-white/20 p-2 rounded-full hidden md:flex">
+      <ArrowRightIcon className="w-6 h-6 text-white" />
+    </div>
+
+    <Swiper
+      spaceBetween={30}
+      slidesPerView={1}
+      navigation={{
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      }}
+      pagination={{
+        clickable: true,
+
+      }}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
+      modules={[Autoplay, Navigation, Pagination]}
+      breakpoints={{
+        640: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }}
+    >
+      {projects.map((project, index) => (
+        <SwiperSlide key={index}>
+          <ProjectCard project={project} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+    <div className="swiper-pagination mt-6 flex justify-center gap-3" />
+
+    {/* See All Projects Button */}
+    <div className="text-center mt-12">
+      <Link
+        to="/projects"
+        className="inline-block bg-white text-[#0f172a] font-semibold px-6 py-3 rounded-full hover:bg-primary-light hover:text-white transition-all duration-300"
+      >
+        See All Projects
+      </Link>
+    </div>
+  </div>
+</div>
 
