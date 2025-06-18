@@ -77,5 +77,27 @@ export default function Home(){
             />
           </div>
         </div>
-    )
-}
+      </div>
+
+{/*----------------------------------------------------------------------------------------- */}
+      {/* About Section */}
+      <div className="grid md:grid-cols-2">
+        <img
+          src={AboutImg}
+          alt="About image"
+          className="w-full object-cover h-[60vh] md:h-screen"
+        />
+
+        <motion.div
+          ref={aboutRef}
+          initial={{ opacity: 0, y: 70 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.2 }}
+          className="text-black flex flex-col justify-center items-center bg-white py-12 px-6 md:px-16"
+        >
+          <h1 className="text-3xl font-semibold mb-5">About Me</h1>
+          <p className="text-lg max-w-[600px] text-center">
+            This week covered the company introduction and the basics of HTML structure. I learned about essential tags like headings, paragraphs, links, and images. Hands-on practice involved creating simple webpages that followed semantic guidelines. I also practiced styling using Tailwind CSS and worked on responsiveness.
+          </p>
+        </motion.div>
+      </div>
