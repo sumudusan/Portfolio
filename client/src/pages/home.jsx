@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+  const projectsRef = useRef(null);
+  const isInViews = useInView(projectsRef, { once: true, margin: "-100px" })
 
   const projects = [
   {
