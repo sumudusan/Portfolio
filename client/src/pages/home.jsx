@@ -3,6 +3,18 @@ import { motion } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
 import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
+import ProjectCard from "../components/projectCard";
+import { Swiper as SwiperComponent, SwiperSlide } from 'swiper/react';
+import { Swiper } from 'swiper/react';
+import 'swiper/css';
+import { Autoplay, Navigation , Pagination} from 'swiper/modules';
+import 'swiper/css/navigation';
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import 'swiper/css/pagination';
+  const aboutRef = useRef(null);
+  const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
+
   const projectsRef = useRef(null);
   const isInViews = useInView(projectsRef, { once: true, margin: "-100px" })
 
