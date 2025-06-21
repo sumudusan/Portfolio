@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
@@ -8,6 +9,9 @@ export default function Contact() {
         
         {/* Left Side - Contact Info */}
         <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
           className=" w-1/3  p-8 md:px-12 md:py-8 flex flex-col justify-center items-center"
         >
           <img
@@ -49,6 +53,9 @@ export default function Contact() {
 
         {/* Right Side - Form */}
         <motion.form
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
           onSubmit={(e) => {
             e.preventDefault();
             alert("Message submitted! (You can integrate with EmailJS or backend)");
