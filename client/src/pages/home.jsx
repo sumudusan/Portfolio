@@ -1,7 +1,8 @@
+import banner from "../assets/2.jpg";
 import AboutImg from "../assets/1.png";
-import { motion } from "framer-motion";
+import { motion , useInView } from "framer-motion";
 import { TypeAnimation } from 'react-type-animation';
-import { FaFacebook, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaLinkedin, FaInstagram, FaCode, FaPaintBrush, FaServer, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import ProjectCard from "../components/projectCard";
@@ -12,6 +13,8 @@ import { Autoplay, Navigation , Pagination} from 'swiper/modules';
 import 'swiper/css/navigation';
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import 'swiper/css/pagination';
+
+export default function Home() {
   const aboutRef = useRef(null);
   const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
 
@@ -60,39 +63,42 @@ import 'swiper/css/pagination';
     link: "https://your-live-demo-url.com",
   },
 ];
-            <img 
-             src={banner}
-             alt="banner image"
-             className="w-full object-cover"
-            />
-          </div>
 
-        {/* Hero Content */}
-        <div className="absolute top-0 left-0 w-full h-full grid grid-cols-1 md:grid-cols-2 items-center px-8">
-          {/* Left Side - Text */}
+  return (
+    <div className="w-full text-white bg-background">
+      {/* Hero Section */}
+      <div className="relative w-full min-h-screen">
+        {/*<img
+          src={banner}
+          alt="banner"
+          className="w-full h-full object-cover absolute top-0 left-0 z-0"
+        />*/}
+  
+
+        <div className="min-h-screen relative bg-surface z-10 flex flex-col md:flex-row  gap-8 px-6  justify-center md:pt-24">
+          {/* Text Section */}
           <motion.div
-            initial={{ opacity: 0, y: 200 }}
+            initial={{ opacity: 0, y: 70 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.5 }}
-            className="flex-row top-40 absolute pl-10 font-bold">
-            <h1 className="text-3xl py-2">Hello, It's me</h1>
-            <h1 className="text-5xl py-2">Sumudu Sandaruwan</h1>
-             <h1 className="text-3xl py-2 ">I'm a
-                <span className="text-primary-light">
+            transition={{ duration: 1.2 }}
+            className="text-center md:text-left max-w-xl pl-10"
+          >
+            <h1 className="text-2xl sm:text-3xl md:text-4xl py-2">Hello, It's me</h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold py-2">Sumudu Sandaruwan</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl py-2">
+              I'm a {" "}
+              <span className="text-accent">
                 <TypeAnimation
-                  sequence={[
-                    " Web Developer", 2000,
-                    " Software Developer", 2000
-                  ]}
+                  sequence={[" Web Developer", 2000, " Software Developer", 2000]}
                   wrapper="span"
                   speed={20}
                   repeat={Infinity}
                 />
-                </span>
-              </h1>
+              </span>
+            </h1>
 
-            {/* Social Media Icons */}
-            <div className="flex gap-6 text-3xl mt-6">
+            {/* Social Icons */}
+            <div className="flex justify-center md:justify-start gap-6 text-2xl md:text-3xl mt-6">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <FaFacebook className="hover:text-blue-500 transition duration-300" />
               </a>
@@ -107,23 +113,23 @@ import 'swiper/css/pagination';
               </a>
             </div>
 
-            {/* More About Me Link */}
+            {/* CTA Button */}
             <div className="mt-8">
               <Link
                 to="/about"
-                className="inline-block bg-primary-light text-white px-4 py-2 rounded-lg hover:bg-white hover:text-black transition duration-300 font-medium"
+                className="inline-block bg-accent text-background px-6 py-3 rounded-lg hover:bg-primary hover:text-black transition duration-300 font-medium hover:shadow-2xl shadow-primary"
               >
                 More About Me
               </Link>
             </div>
           </motion.div>
 
-          {/* Right Side - Image */}
-          <div className="flex justify-center z-10">
+          {/* Profile Image */}
+          <div className="flex justify-center md:justify-end pr-5">
             <img
               src={AboutImg}
               alt="profile"
-              className="h-[70vh] w-auto rounded-full object-cover shadow-lg"
+              className=" md:h-[70vh] md:w-auto rounded-full object-cover shadow-2xl border-4 border-white shadow-primary"
             />
           </div>
         </div>
@@ -131,11 +137,11 @@ import 'swiper/css/pagination';
 
 {/*----------------------------------------------------------------------------------------- */}
       {/* About Section */}
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 p-10 rounded-xl md:h-screen items-center">
         <img
           src={AboutImg}
           alt="About image"
-          className="w-full object-cover h-[60vh] md:h-screen"
+          className="md:h-[70vh] md:w-90 object-cover h-[60vh] mx-12 border-accent border-1"
         />
 
         <motion.div
@@ -143,7 +149,7 @@ import 'swiper/css/pagination';
           initial={{ opacity: 0, y: 70 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1.2 }}
-          className="text-black flex flex-col justify-center items-center bg-white py-12 px-6 md:px-16"
+          className="text-white flex flex-col justify-center items-center md:h-110 bg-surface py-12 px-6 md:px-16 rounded-xl"
         >
           <h1 className="text-3xl font-semibold mb-5">About Me</h1>
           <p className="text-lg max-w-[600px] text-center">
@@ -153,7 +159,7 @@ import 'swiper/css/pagination';
       </div>
 {/*---------------------------------------------------------------------------------------- */}
         {/* My Services Section */}
-<div className="bg-[#0f172a] py-16 px-6 text-white">
+<div className="bg-background py-16 px-6 text-white md:h-screen">
   <motion.h2
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -164,7 +170,7 @@ import 'swiper/css/pagination';
     My Services
   </motion.h2>
 
-  <div className="max-w-4xl mx-auto">
+  <div className="max-w-4xl mx-auto ">
     <SwiperComponent
       spaceBetween={30}
       slidesPerView={1}
@@ -181,7 +187,7 @@ import 'swiper/css/pagination';
           title: "Frontend Development",
           desc: "Responsive web apps using React, Tailwind CSS & animations.",
           icon: (
-            <div className="text-5xl text-primary-light transition-transform hover:scale-125 duration-300 animate-bounce">
+            <div className="text-5xl text-primary-light transition-transform hover:scale-125 duration-300 animate-bounce ">
               <FaCode />
             </div>
           ),
@@ -211,7 +217,7 @@ import 'swiper/css/pagination';
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
-            className="bg-white text-black rounded-xl p-6 shadow-md hover:shadow-xl transition duration-300 flex flex-col items-center text-center"
+            className="bg-surface text-white rounded-xl p-6 hover:shadow-primary transition duration-300 flex flex-col items-center text-center border-1 shadow-2xl border-accent"
           >
             {service.icon}
             <h3 className="text-xl font-bold mt-4 mb-2">{service.title}</h3>
@@ -226,7 +232,7 @@ import 'swiper/css/pagination';
   <div className="text-center mt-12">
     <Link
       to="/contact"
-      className="inline-block bg-primary-light text-white font-medium px-6 py-3 rounded-full hover:bg-white hover:text-black transition duration-300"
+      className="inline-block bg-accent text-background font-medium px-6 py-3 rounded-full hover:bg-primary shadow-2xl hover:shadow-primary  transition duration-300"
     >
       Hire Me
     </Link>
@@ -235,8 +241,8 @@ import 'swiper/css/pagination';
 
 
 {/*----------------------------------------------------------------------------------------- */}
-         {/* Projects Section */}
-<div className="min-h-screen bg-[#0f172a] py-16 px-6 text-white relative">
+{/* Projects Section */}
+<div className="bg-background py-20 px-6 text-white">
   <motion.h1
     ref={projectsRef}
     initial={{ opacity: 0, y: 70 }}
@@ -248,30 +254,18 @@ import 'swiper/css/pagination';
   </motion.h1>
 
   <div className="max-w-6xl mx-auto relative">
-    {/* Custom navigation buttons */}
-    <div className="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white/10 hover:bg-white/20 p-2 rounded-full hidden md:flex">
-      <ArrowLeftIcon className="w-6 h-6 text-white" />
-    </div>
-    <div className="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white/10 hover:bg-white/20 p-2 rounded-full hidden md:flex">
-      <ArrowRightIcon className="w-6 h-6 text-white" />
-    </div>
-
     <Swiper
       spaceBetween={30}
       slidesPerView={1}
-      navigation={{
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      }}
       pagination={{
         clickable: true,
-
+        el: ".custom-swiper-pagination", // custom pagination container selector
       }}
       autoplay={{
         delay: 3000,
         disableOnInteraction: false,
       }}
-      modules={[Autoplay, Navigation, Pagination]}
+      modules={[Autoplay, Pagination]}
       breakpoints={{
         640: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
@@ -284,13 +278,15 @@ import 'swiper/css/pagination';
         </SwiperSlide>
       ))}
     </Swiper>
-    <div className="swiper-pagination mt-6 flex justify-center gap-3" />
 
-    {/* See All Projects Button */}
+    {/* Custom Pagination Dots */}
+    <div className="custom-swiper-pagination mt-10 flex justify-center gap-3" />
+
+    {/* CTA Button */}
     <div className="text-center mt-12">
       <Link
         to="/projects"
-        className="inline-block bg-white text-[#0f172a] font-semibold px-6 py-3 rounded-full hover:bg-primary-light hover:text-white transition-all duration-300"
+        className="inline-block bg-accent text-background font-semibold px-6 py-3 rounded-full hover:bg-primary shadow-2xl hover:shadow-primary transition-all duration-300"
       >
         See All Projects
       </Link>
@@ -298,9 +294,10 @@ import 'swiper/css/pagination';
   </div>
 </div>
 
+
 {/*--------------------------------------------------------------------------------------- */}
-<div className="min-h-screen bg-[#0f172a] text-white py-15 px-6 flex items-center justify-center">
-      <div className="max-w-6xl w-full flex gap-10 bg-white text-black rounded-xl shadow-lg overflow-hidden">
+<div className="min-h-screen bg-background text-white py-15 px-6 flex items-center justify-center">
+      <div className="max-w-6xl w-full flex gap-10 bg-surface text-white rounded-xl shadow-lg overflow-hidden">
         
         {/* Left Side - Contact Info */}
         <motion.div
@@ -357,7 +354,7 @@ import 'swiper/css/pagination';
           }}
           className="p-8 w-2/3 md:p-12 space-y-6"
         >
-          <h2 className="text-2xl font-bold text-[#0f172a] mb-2">Let's Discuss Your Project</h2>
+          <h2 className="text-2xl font-bold text-white mb-2">Let's Discuss Your Project</h2>
 
           <div className="space-y-1">
             <label className="block font-semibold">Full Name</label>
@@ -391,7 +388,7 @@ import 'swiper/css/pagination';
 
           <button
             type="submit"
-            className="bg-primary-light text-white px-6 py-3 rounded-md hover:bg-[#0f172a] transition duration-300"
+            className="bg-accent text-background w-full py-3 rounded-3xl hover:bg-primary shadow-2xl hover:shadow-primary  transition duration-300"
           >
             Submit Message
           </button>
