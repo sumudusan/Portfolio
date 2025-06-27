@@ -5,6 +5,8 @@ import Home from "./pages/home";
 import Contact from "./pages/contact";
 import Projects from "./pages/projects";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Footer from "./components/footer";
+import Services from "./pages/services";
 
 export default function App() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -46,7 +48,11 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/services" element={<Services/>}/>
           </Routes>
+        </div>
+        <div>
+          <Footer/>
         </div>
       </BrowserRouter>
     </div>
