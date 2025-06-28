@@ -32,7 +32,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <div className="min-h-screen bg-[#0f172a] py-16 px-6 text-white">
+    <div className="min-h-screen bg-background  py-16 px-6 text-white">
       <motion.h1
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
