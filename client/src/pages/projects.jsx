@@ -1,36 +1,26 @@
 // src/pages/Projects.jsx
 import { motion } from "framer-motion";
 import ProjectCard from "../components/projectCard";
-
-const projects = [
-  {
-    id: 1,
-    title: "Portfolio Website",
-    description:
-      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
-    image: "/projects/portfolio.png",
-    link: "https://your-live-demo-url.com",
-  },
-  {
-    id: 2,
-    title: "E-Commerce App",
-    description:
-      "Full-stack MERN app with product pages, user auth, cart, and Stripe payments.",
-    image: "/projects/ecommerce.png",
-    link: "https://your-ecommerce-url.com",
-  },
-  {
-    id: 3,
-    title: "E-Commerce App",
-    description:
-      "Full-stack MERN app with product pages, user auth, cart, and Stripe payments.",
-    image: "/projects/ecommerce.png",
-    link: "https://your-ecommerce-url.com",
-  },
-  // Add more projects here
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Projects() {
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/projects");
+        setProjects(res.data);
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background  py-16 px-6 text-white">
       <motion.h1
@@ -44,7 +34,7 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-3">
         {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.projectId} project={project} />
         ))}
       </div>
     </div>
