@@ -19,32 +19,25 @@ export default function Home() {
   const isInView = useInView(aboutRef, { once: true, margin: "-100px" });
 
   const projectsRef = useRef(null);
-  const isInViews = useInView(projectsRef, { once: true, margin: "-100px" })
+  const isInViews = useInView(projectsRef, { once: true, margin: "-100px" });
 
-  const projects = [
-  {
-    id: 1,
-    title: "Portfolio Website",
-    description:
-      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
-    image: "/projects/portfolio.png",
-    link: "https://your-live-demo-url.com",
-  },
-  {
-    id: 2,
-    title: "Portfolio Website",
-    description:
-      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
-    image: "/projects/portfolio.png",
-    link: "https://your-live-demo-url.com",
-  },
-  {
-    id: 3,
-    title: "Portfolio Website",
-    description:
-      "Responsive portfolio site built with React, Tailwind CSS, and Framer Motion. Features hero, about, and project sections.",
-    image: "/projects/portfolio.png",
-    link: "https://your-live-demo-url.com",
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/projects");
+        setProjects(res.data);
+      } catch (err) {
+        console.error("Error fetching projects:", err);
+      }finally {
+      setLoading(false); // Hide spinner
+    }
+    };
+
+    fetchProjects();
+  }, []);
   },
   {
     id: 4,
