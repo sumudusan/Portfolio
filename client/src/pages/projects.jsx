@@ -7,6 +7,7 @@ import axios from "axios";
 export default function Projects() {
 
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -15,7 +16,9 @@ export default function Projects() {
         setProjects(res.data);
       } catch (err) {
         console.error("Error fetching projects:", err);
-      }
+      }finally {
+      setLoading(false); // Hide spinner
+    }
     };
 
     fetchProjects();
@@ -32,11 +35,16 @@ export default function Projects() {
         My Projects
       </motion.h1>
 
-      <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-3">
+      {loading ? (
+    <div className="flex justify-center items-center py-10">
+      <div className="w-12 h-12 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+    </div>
+    ) :(<div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.projectId} project={project} />
         ))}
       </div>
+      )}
     </div>
   );
 }
